@@ -1,0 +1,326 @@
+body{
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+	color: #000000;
+}
+
+.container{
+	max-width: 1230px;
+	padding: 0 30px;
+	margin: 0 auto;
+}
+
+// header 
+
+@mixin dfsp{
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin tac{
+  text-align: center;
+}
+@mixin anim{
+  transform: scale(1.2);
+  text-shadow: 1px 1px 3px #000000;
+}
+
+@mixin transition{
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+.header{
+	padding-top: 46px;
+  background: #F1F1F1;
+    &-nav{
+      @include dfsp;
+      align-items: flex-end;
+      margin-bottom: 76px;
+    }
+    &-row{
+      @include dfsp;
+      column-gap: 30px;
+    }
+    &-content {
+      margin-top: 124px;
+      max-width: 500px;
+      line-height: 2;
+    }
+    &-img-mobile{
+      display: none;
+    }
+}
+
+.nav{
+  &-btn{
+    display: none;
+  }
+  &-link{
+    position: relative;
+    padding: 0 12px 3px 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    color: #000000;
+  }
+  &-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #FDA300;
+    border-radius: 50%;
+  }
+  &-list{
+    display: flex;
+    column-gap: 50px;
+  }
+}
+
+.item-link{
+	color: #000000;
+	font-weight: 500;
+  display: inline-block;
+  @include transition;
+  &.active{
+    color: #606060;
+  }
+  &:hover{
+    @include anim;
+  }
+}
+
+.content-title{
+	font-weight: 600;
+	font-size: 44px;
+	line-height: 66px;
+	margin-bottom: 20px;
+}
+
+// services
+
+.services{
+	padding: 90px 0;
+  &-row{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 60px;
+  }
+  &-card-title{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  &-card-img{
+    margin-bottom: 30px;
+  }
+  &-card p {
+    line-height: 2;
+  }
+}
+
+// portfolio
+
+.portfolio{
+	padding: 90px 0;
+}
+
+.subtitle{
+	font-weight: 600;
+	font-size: 34px;
+	line-height: 51px;
+	@include tac;
+	margin-bottom: 70px;
+}
+
+.project{
+	@include tac;
+	margin-bottom: 90px;
+  &-img{
+    margin-bottom: 40px;
+  }
+  &-title{
+    font-size: 18px;
+    line-height: 27px;
+    @include tac;
+  }
+  &-title a{
+    color: #070707;
+    text-decoration-line: underline;
+    display: inline-block;
+    @include transition;
+  }
+  &-title a:hover{
+    @include anim;
+    
+  }
+}
+
+.contacts{
+	@include tac;
+  font-size: 18px;
+	line-height: 27px;
+	margin-bottom: 40px;
+	padding: 90px 0;
+  &-title{
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 51px;
+    @include tac;
+    margin-bottom: 70px;
+  }  
+  &-text{
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 40px;
+  }
+  &-btn{
+    display: inline-block;
+    padding: 7px 22px;
+    background-color: #070707;
+    border-radius: 30px;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 80px;
+    @include transition;
+  }
+  &-btn:hover{
+    @include anim;
+  }
+
+  &-btn a{
+    color: #fff;
+  }
+  &-social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 60px;
+    margin-bottom: 41px;
+    @include transition;
+  }
+  &-social a:hover{
+    @include anim;
+  }
+  &-info{
+    line-height: 21px;
+    color: #828282;
+  }
+}
+
+// Media 
+
+@media(max-width: 850px){
+	// header 
+	.header{
+    &-row{
+      flex-direction: column;
+      @include tac;
+    }
+    &-content {
+      margin-top: 0;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 315px;
+      margin-top: 0;
+    }
+    &-nav{
+      margin-bottom: 46px;
+    }
+    &-img{
+      display: none;
+    }
+    &-img-mobile{
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .nav-btn{
+      @include transition;
+    }
+    .nav-btn:hover{
+      cursor: pointer;
+      @include anim;
+    }
+	}
+
+  .content-title{
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .nav{
+    &-list{
+      display: none;
+    }
+    &-btn{
+      display: block;
+      position: absolute;
+      z-index: 8;
+      top: 46px;
+      right: 30px;
+    }
+    &.open .nav-list{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      background-color: #fff;
+      padding: 46px 30px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 40px;
+      font-weight: 600;
+      font-size: 34px;
+    }
+  }
+
+.item-link{
+  color: #606060;
+  &.active{
+    color: #000000;
+  }
+  &:hover{
+    color: #000000;
+  }
+}
+}
+// margin and padding 
+.services{
+  padding: 40px 0;
+}
+
+.portfolio,.contacts{
+  padding: 0;
+}
+
+.subtitle{
+  margin-bottom: 22px;
+}
+
+.project{
+  margin-bottom: 42px;
+}
+
+.contacts{
+  &-title{
+    margin-bottom: 12px;
+  }
+  &-btn{
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 450px) {
+  .contacts-social{
+    column-gap: 30px;
+  }
+}
